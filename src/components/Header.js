@@ -1,7 +1,7 @@
-import { Button } from './Button';
+import { Button } from './index';
 import logo from '../assets/images/pizza-logo.svg';
 
-export const Header = () => (
+const Header = () => (
   <div className='header'>
     <div className='container'>
       <div className='header__logo'>
@@ -50,3 +50,5 @@ export const Header = () => (
     </div>
   </div>
 );
+
+export default Header;
