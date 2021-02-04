@@ -2,12 +2,19 @@
 
 .sort {
   position: relative;
+
   &__label {
     display: flex;
     align-items: center;
 
     svg {
       margin-right: 8px;
+      transform: rotate(180deg);
+      animation: rotation-backward 0.3s linear forwards;
+    }
+
+    .rotated {
+      animation: rotation-forward 0.3s linear forwards;
     }
 
     b {
@@ -18,6 +25,26 @@
       color: $orange;
       border-bottom: 1px dashed $orange;
       cursor: pointer;
+    }
+
+    @keyframes rotation-forward {
+      from {
+        transform: rotate(180deg);
+      }
+
+      to {
+        transform: rotate(0);
+      }
+    }
+
+    @keyframes rotation-backward {
+      from {
+        transform: rotate(0);
+      }
+
+      to {
+        transform: rotate(180deg);
+      }
     }
   }
 
@@ -34,6 +61,7 @@
 
     ul {
       overflow: hidden;
+
       li {
         padding: 12px 20px;
         cursor: pointer;
