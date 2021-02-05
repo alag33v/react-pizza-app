@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-const PizzaBlock = ({ name, price, imageUrl, types, sizes }) => {
+const PizzaBlock = ({ name, price, imageUrl, sizes }) => {
   const [activeDough, setActiveDough] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
   const doughs = ['тонкое', 'традиционное'];
@@ -55,6 +56,13 @@ const PizzaBlock = ({ name, price, imageUrl, types, sizes }) => {
       </div>
     </div>
   );
+};
+
+PizzaBlock.propTypes = {
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  sizes: PropTypes.arrayOf(PropTypes.number).isRequired
 };
 
 export default PizzaBlock;

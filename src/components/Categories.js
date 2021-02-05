@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const Categories = ({ categoryNames }) => {
   const [activeItem, setActiveItem] = useState(null);
@@ -25,6 +26,10 @@ const Categories = ({ categoryNames }) => {
       </ul>
     </div>
   );
+};
+
+Categories.propTypes = {
+  categoryNames: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default Categories;

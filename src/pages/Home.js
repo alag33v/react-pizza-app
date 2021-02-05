@@ -1,4 +1,5 @@
 import { Categories, SortPopup, PizzaBlock } from '../components';
+import PropTypes from 'prop-types';
 
 const Home = ({ pizzas }) => (
   <div className='container'>
@@ -20,5 +21,9 @@ const Home = ({ pizzas }) => (
     </div>
   </div>
 );
+
+SortPopup.propTypes = {
+  sortTitles: PropTypes.array.isRequired
+};
 
 export default Home;

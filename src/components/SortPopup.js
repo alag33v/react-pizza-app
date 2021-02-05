@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 
 const SortPopup = ({ sortTitles }) => {
   const [showPopup, setShowPopup] = useState(false);
@@ -63,6 +64,10 @@ const SortPopup = ({ sortTitles }) => {
       )}
     </div>
   );
+};
+
+SortPopup.propTypes = {
+  sortTitles: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default SortPopup;
