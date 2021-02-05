@@ -25,7 +25,11 @@ export const App = () => {
       <Header />
       <div className='content'>
         <Switch>
-          <Route exact path='/' render={() => <Home pizzas={pizzas} />} />
+          <Route
+            exact
+            path='/react-pizza-app'
+            render={() => <Home pizzas={pizzas} />}
+          />
           <Route exact path='/cart' component={Cart} />
           <Route component={NotFound} />
         </Switch>
