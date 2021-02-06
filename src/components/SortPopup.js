@@ -44,19 +44,19 @@ const SortPopup = ({ sortTitles }) => {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={togglePopup}>{sortTitles[activeTitle]}</span>
+        <span onClick={togglePopup}>{sortTitles[activeTitle].name}</span>
       </div>
       {showPopup && (
         <div className='sort__popup'>
           <ul>
             {sortTitles &&
-              sortTitles.map((name, index) => (
+              sortTitles.map((sortObj, index) => (
                 <li
                   className={activeTitle === index ? 'active' : ''}
                   onClick={() => onSelectTitle(index)}
-                  key={`${name}-${index}`}
+                  key={`${sortObj.name}-${index}`}
                 >
-                  {name}
+                  {sortObj.name}
                 </li>
               ))}
           </ul>
@@ -67,7 +67,7 @@ const SortPopup = ({ sortTitles }) => {
 };
 
 SortPopup.propTypes = {
-  sortTitles: PropTypes.arrayOf(PropTypes.string).isRequired
+  sortTitles: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default SortPopup;

@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { Header } from './components';
 import { Home, Cart, NotFound } from './pages';
+import { setPizzas } from './redux/ducks/pizzasDucks';
 
 export const App = () => {
-  const [pizzas, setPizzas] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchPizzasData = async () => {
@@ -13,23 +15,20 @@ export const App = () => {
           'https://my-api-test-2021.herokuapp.com/pizzas'
         );
         const pizzasData = await response.json();
-        setPizzas(pizzasData);
+        dispatch(setPizzas(pizzasData));
       } catch (err) {
         console.log('error', err);
       }
     };
     fetchPizzasData();
-  }, []);
+  }, [dispatch]);
+
   return (
     <div className='wrapper'>
       <Header />
       <div className='content'>
         <Switch>
-          <Route
-            exact
-            path='/react-pizza-app'
-            render={() => <Home pizzas={pizzas} />}
-          />
+          <Route exact path='/react-pizza-app' component={Home} />
           <Route exact path='/cart' component={Cart} />
           <Route component={NotFound} />
         </Switch>
