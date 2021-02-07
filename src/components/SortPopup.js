@@ -1,13 +1,21 @@
 import { useState, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { setSort } from '../redux/ducks/filtersDucks';
 
-const SortPopup = ({ sortTitles }) => {
+const SortPopup = () => {
   const [showPopup, setShowPopup] = useState(false);
-  const [activeTitle, setActiveTitle] = useState(0);
   const sortRef = useRef(null);
+  const { sortTitles, sortActive } = useSelector(({ filters }) => ({
+    sortTitles: filters.sortTitles,
+    sortActive: filters.sortActive
+  }));
+  const dispatch = useDispatch();
 
   useEffect(() => {
     document.body.addEventListener('click', handleOutsideClick);
+    return () => {
+      document.body.removeEventListener('click', handleOutsideClick);
+    };
   }, []);
 
   const handleOutsideClick = e => {
@@ -23,7 +31,7 @@ const SortPopup = ({ sortTitles }) => {
   };
 
   const onSelectTitle = index => {
-    setActiveTitle(index);
+    dispatch(setSort(index));
     setShowPopup(false);
   };
 
@@ -44,7 +52,7 @@ const SortPopup = ({ sortTitles }) => {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={togglePopup}>{sortTitles[activeTitle].name}</span>
+        <span onClick={togglePopup}>{sortTitles[sortActive].name}</span>
       </div>
       {showPopup && (
         <div className='sort__popup'>
@@ -52,7 +60,7 @@ const SortPopup = ({ sortTitles }) => {
             {sortTitles &&
               sortTitles.map((sortObj, index) => (
                 <li
-                  className={activeTitle === index ? 'active' : ''}
+                  className={sortActive === index ? 'active' : ''}
                   onClick={() => onSelectTitle(index)}
                   key={`${sortObj.name}-${index}`}
                 >
@@ -64,10 +72,6 @@ const SortPopup = ({ sortTitles }) => {
       )}
     </div>
   );
-};
-
-SortPopup.propTypes = {
-  sortTitles: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default SortPopup;

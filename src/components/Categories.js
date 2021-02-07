@@ -1,11 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
 import { setCategory } from '../redux/ducks/filtersDucks';
 
 const Categories = () => {
-  const { activeItem, categoryNames } = useSelector(({ filters }) => ({
-    activeItem: filters.category,
-    categoryNames: filters.categoryNames
+  const { categoryNames, categoryActive } = useSelector(({ filters }) => ({
+    categoryNames: filters.categoryNames,
+    categoryActive: filters.categoryActive
   }));
   const dispatch = useDispatch();
 
@@ -17,7 +16,7 @@ const Categories = () => {
     <div className='categories'>
       <ul>
         <li
-          className={activeItem === null ? 'active' : ''}
+          className={categoryActive === null ? 'active' : ''}
           onClick={() => onSelectCategory(null)}
         >
           Все
@@ -25,7 +24,7 @@ const Categories = () => {
         {categoryNames &&
           categoryNames.map((name, index) => (
             <li
-              className={activeItem === index ? 'active' : ''}
+              className={categoryActive === index ? 'active' : ''}
               onClick={() => onSelectCategory(index)}
               key={`${name}-${index}`}
             >
@@ -35,10 +34,6 @@ const Categories = () => {
       </ul>
     </div>
   );
-};
-
-Categories.propTypes = {
-  categoryNames: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default Categories;
