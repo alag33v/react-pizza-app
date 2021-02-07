@@ -2,10 +2,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setCategory } from '../redux/ducks/filtersDucks';
 
 const Categories = () => {
-  const { categoryNames, categoryActive } = useSelector(({ filters }) => ({
-    categoryNames: filters.categoryNames,
-    categoryActive: filters.categoryActive
-  }));
+  const { categoryNames, categoryActive } = useSelector(
+    ({ filters }) => filters
+  );
   const dispatch = useDispatch();
 
   const onSelectCategory = index => {

@@ -5,10 +5,7 @@ import { setSort } from '../redux/ducks/filtersDucks';
 const SortPopup = () => {
   const [showPopup, setShowPopup] = useState(false);
   const sortRef = useRef(null);
-  const { sortTitles, sortActive } = useSelector(({ filters }) => ({
-    sortTitles: filters.sortTitles,
-    sortActive: filters.sortActive
-  }));
+  const { sortTitles, sortActive } = useSelector(({ filters }) => filters);
   const dispatch = useDispatch();
 
   useEffect(() => {

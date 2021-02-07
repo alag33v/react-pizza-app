@@ -1,14 +1,10 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
 const PizzaBlock = ({ name, price, imageUrl, sizes }) => {
   const [activeDough, setActiveDough] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
   const doughs = ['тонкое', 'традиционное'];
-  const isLoading = useSelector(state => state.pizzas.isLoading);
-
-  if (isLoading) return <div>Loading...</div>;
 
   return (
     <div className='pizza-block'>
