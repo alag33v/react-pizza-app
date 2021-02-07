@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { setCategory } from '../redux/ducks/filtersDucks';
+import { fetchPizzas } from '../redux/ducks/pizzasDucks';
 
 const Categories = () => {
   const { categoryNames, categoryActive } = useSelector(
@@ -9,6 +10,8 @@ const Categories = () => {
 
   const onSelectCategory = index => {
     dispatch(setCategory(index));
+
+    dispatch(fetchPizzas(index));
   };
 
   return (

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setSort } from '../redux/ducks/filtersDucks';
+import { setCategory, setSort } from '../redux/ducks/filtersDucks';
+import { fetchPizzas } from '../redux/ducks/pizzasDucks';
 
 const SortPopup = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -27,8 +28,10 @@ const SortPopup = () => {
     setShowPopup(!showPopup);
   };
 
-  const onSelectTitle = index => {
+  const onSelectTitle = (index, type) => {
     dispatch(setSort(index));
+    dispatch(setCategory(null));
+    dispatch(fetchPizzas(type));
     setShowPopup(false);
   };
 
@@ -58,8 +61,8 @@ const SortPopup = () => {
               sortTitles.map((sortObj, index) => (
                 <li
                   className={sortActive === index ? 'active' : ''}
-                  onClick={() => onSelectTitle(index)}
-                  key={`${sortObj.name}-${index}`}
+                  onClick={() => onSelectTitle(index, sortObj.type)}
+                  key={`${sortObj.name}-${sortObj.type}-${index}`}
                 >
                   {sortObj.name}
                 </li>

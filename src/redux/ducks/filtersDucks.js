@@ -10,8 +10,7 @@ const initialState = {
   categoryActive: null,
   sortTitles: [
     { name: 'популярности', type: 'popularity' },
-    { name: 'цене', type: 'price' },
-    { name: 'алфавиту', type: 'alphabet' }
+    { name: 'цене', type: 'price' }
   ],
   sortActive: 0
 };

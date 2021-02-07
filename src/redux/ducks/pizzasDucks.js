@@ -37,14 +37,28 @@ const hideLoader = () => ({
 });
 
 // Thunk Creators
-export const fetchPizzas = () => async dispatch => {
+export const fetchPizzas = index => async dispatch => {
   dispatch(showLoader());
   try {
     const response = await fetch(
       'https://my-api-test-2021.herokuapp.com/pizzas'
     );
     const pizzasData = await response.json();
-    dispatch(setPizzas(pizzasData));
+    const filterPizzas = pizzasData.filter(item => {
+      if (typeof index === 'number') {
+        return item.category === index;
+      }
+      if (typeof index === 'string') {
+        if (index === 'price') {
+          return pizzasData.sort((a, b) => b.price - a.price);
+        }
+        if (index === 'popularity') {
+          return pizzasData.sort((a, b) => b.rating - a.rating);
+        }
+      }
+      return item;
+    });
+    dispatch(setPizzas(filterPizzas));
   } catch (err) {
     console.log('error', err);
   } finally {

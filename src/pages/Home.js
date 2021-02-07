@@ -5,7 +5,6 @@ import { fetchPizzas } from '../redux/ducks/pizzasDucks';
 
 const Home = () => {
   const pizzas = useSelector(({ pizzas }) => pizzas.pizzas);
-  // const { categoryActive, sortActive } = useSelector(({ filters }) => filters); // filters
   const isLoading = useSelector(state => state.pizzas.isLoading);
   const dispatch = useDispatch();
 
@@ -25,7 +24,9 @@ const Home = () => {
           ? Array(10)
               .fill('')
               .map((_, index) => <Loader key={index} />)
-          : pizzas.map(pizza => <PizzaBlock {...pizza} key={pizza.id} />)}
+          : pizzas.map((pizza, index) => (
+              <PizzaBlock {...pizza} key={`${pizza.id}-${index}`} />
+            ))}
       </div>
     </div>
   );
