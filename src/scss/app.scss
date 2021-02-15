@@ -28,7 +28,6 @@ body {
   &__items {
     display: flex;
     flex-wrap: wrap;
-    justify-content: start;
   }
 
   &__top {
@@ -45,7 +44,7 @@ body {
 
   &--cart {
     max-width: 820px;
-    margin: 90px auto;
+    margin: 25px auto;
 
     .content__title {
       margin: 0;
@@ -285,9 +284,21 @@ body {
     width: 560px;
     text-align: center;
 
+    .cart-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+      align-items: center;
+    }
+
     h2 {
       font-size: 32px;
-      margin-bottom: 10px;
+    }
+
+    .sad {
+      width: 30px;
+      height: 30px;
+      margin: 0 0 0 15px;
     }
 
     p {

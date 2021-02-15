@@ -1,10 +1,31 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import Button from './Button';
 
-const PizzaBlock = ({ name, price, imageUrl, sizes }) => {
+const PizzaBlock = ({
+  name,
+  price,
+  imageUrl,
+  sizes,
+  id,
+  cartCount,
+  onClickAddPizza
+}) => {
   const [activeDough, setActiveDough] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
   const doughs = ['тонкое', 'традиционное'];
+
+  const onAddPizza = () => {
+    const pizzaObj = {
+      name,
+      price,
+      imageUrl,
+      dough: doughs[activeDough],
+      size: sizes[activeSize],
+      id
+    };
+    onClickAddPizza(pizzaObj);
+  };
 
   return (
     <div className='pizza-block'>
@@ -36,8 +57,8 @@ const PizzaBlock = ({ name, price, imageUrl, sizes }) => {
         </ul>
       </div>
       <div className='pizza-block__bottom'>
-        <div className='pizza-block__price'>от {price} ₽</div>
-        <div className='button button--outline button--add'>
+        <div className='pizza-block__price'>{price} ₽</div>
+        <Button className='button--add' onClick={onAddPizza} outline>
           <svg
             width='12'
             height='12'
@@ -51,8 +72,8 @@ const PizzaBlock = ({ name, price, imageUrl, sizes }) => {
             />
           </svg>
           <span>Добавить</span>
-          <i>2</i>
-        </div>
+          {cartCount && <i>{cartCount}</i>}
+        </Button>
       </div>
     </div>
   );
@@ -62,7 +83,10 @@ PizzaBlock.propTypes = {
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   imageUrl: PropTypes.string.isRequired,
-  sizes: PropTypes.arrayOf(PropTypes.number).isRequired
+  sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
+  id: PropTypes.number.isRequired,
+  cartCount: PropTypes.number,
+  onAddPizzaToCart: PropTypes.func
 };
 
 export default PizzaBlock;
