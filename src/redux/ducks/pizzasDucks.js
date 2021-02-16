@@ -41,7 +41,7 @@ export const fetchPizzas = index => async dispatch => {
   dispatch(showLoader());
   try {
     const response = await fetch(
-      'https://my-api-test-2021.herokuapp.com/pizzas'
+      'https://react-pizza-api.herokuapp.com/pizzas'
     );
     const pizzasData = await response.json();
     const filterPizzas = pizzasData.filter(item => {

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   minusCartPizza,
@@ -11,6 +11,7 @@ import sad from '../assets/images/sad.svg';
 import emptyCart from '../assets/images/empty-cart.png';
 
 const Cart = () => {
+  const history = useHistory();
   const { pizzas, totalPrice, itemsCount } = useSelector(({ cart }) => cart);
   const dispatch = useDispatch();
   const pizzasItems = Object.keys(pizzas).map(key => pizzas[key].pizzas[0]);
@@ -37,6 +38,7 @@ const Cart = () => {
   const onOrder = () => {
     alert('Ваш заказ принят');
     dispatch(clearCart());
+    history.push('react-pizza-app');
   };
 
   return (
@@ -140,7 +142,7 @@ const Cart = () => {
                 Всего пицц: <b>{itemsCount} шт.</b>
               </span>
               <span>
-                Сумма заказа: <b>{totalPrice} ₽</b>
+                Сумма заказа: <b>{totalPrice} ₴</b>
               </span>
             </div>
             <div className='cart__bottom-buttons'>

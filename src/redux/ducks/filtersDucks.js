@@ -6,7 +6,7 @@ const SET_SORT = 'SET_SORT';
 // Reducer
 const initialState = {
   sortBy: 'popularity',
-  categoryNames: ['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'],
+  categoryNames: ['Мясные', 'Вегетарианские', 'Острые'],
   categoryActive: null,
   sortTitles: [
     { name: 'популярности', type: 'popularity' },

@@ -57,7 +57,7 @@ const PizzaBlock = ({
         </ul>
       </div>
       <div className='pizza-block__bottom'>
-        <div className='pizza-block__price'>{price} ₽</div>
+        <div className='pizza-block__price'>{price} ₴</div>
         <Button className='button--add' onClick={onAddPizza} outline>
           <svg
             width='12'
