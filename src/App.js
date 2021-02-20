@@ -9,7 +9,6 @@ export const App = () => (
       <Switch>
         <Route exact path='/react-pizza-app' component={Home} />
         <Route exact path='/cart' component={Cart} />
-        <Route component={NotFound} />
       </Switch>
     </div>
   </div>

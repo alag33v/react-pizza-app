@@ -23,7 +23,7 @@ const Home = () => {
         <Categories />
         <SortPopup />
       </div>
-      <h2 className='content__title'>Все пиццы</h2>
+      <h2 className='content__title'>Пиццы</h2>
       <div className='content__items'>
         {isLoading
           ? Array(12)

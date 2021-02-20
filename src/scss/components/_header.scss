@@ -12,6 +12,7 @@
 
   &__logo {
     display: flex;
+    align-items: center;
 
     img {
       margin-right: 15px;
@@ -23,6 +24,14 @@
       letter-spacing: 1%;
       text-transform: uppercase;
       font-weight: 800;
+
+      @media (max-width: 550px) {
+        font-size: 20px;
+      }
+
+      @media (max-width: 500px) {
+        display: none;
+      }
     }
 
     p {

@@ -3,6 +3,11 @@
 .categories {
   ul {
     display: flex;
+    flex-wrap: wrap;
+
+    @media (max-width: 850px) {
+      margin-bottom: 15px;
+    }
 
     li {
       background-color: #f9f9f9;
@@ -14,17 +19,47 @@
       transition: background-color 0.1s ease-in-out;
       @include noselect();
 
+      @media (max-width: 1150px) {
+        padding: 10px 20px;
+      }
+
+      @media (max-width: 850px) {
+        padding: 13px 30px;
+      }
+
+      @media (max-width: 550px) {
+        padding: 10px 20px;
+        max-width: 100%;
+      }
+
+      @media (max-width: 500px) {
+        padding: 10px 5px;
+        max-width: 100%;
+        background-color: transparent;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+
       &:hover {
         background-color: darken(#f9f9f9, 2%);
       }
 
       &:active {
         background-color: darken(#f9f9f9, 5%);
+
       }
 
       &.active {
         background-color: #282828;
         color: #fff;
+
+        @media (max-width: 500px) {
+          color: #f24701;
+          border: none;
+          background-color: transparent;
+        }
       }
     }
   }

@@ -5,8 +5,16 @@
   text-align: center;
   margin-bottom: 65px;
 
+  @media (max-width: 1500px) {
+    margin: 0 20px 50px;
+  }
+
   &:not(:nth-of-type(4n)) {
     margin-right: 46px;
+
+    @media (max-width: 1500px) {
+      margin-right: 20px;
+    }
   }
 
   &__image {
@@ -60,8 +68,6 @@
     justify-content: space-between;
     margin-top: 20px;
     white-space: nowrap;
-
-
   }
 
   &__price {

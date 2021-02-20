@@ -180,9 +180,8 @@ const Cart = () => {
             <img className='sad' src={sad} alt='sad' />
           </div>
           <p>
-            Вероятней всего, вы не заказывали ещё пиццу.
-            <br />
-            Для того, чтобы заказать пиццу, перейди на главную страницу.
+            Вероятней всего, вы не заказывали ещё пиццу. Для того, чтобы
+            заказать пиццу, перейди на главную страницу.
           </p>
           <img src={emptyCart} alt='Empty cart' />
           <Link className='button button--black' to='/react-pizza-app'>
