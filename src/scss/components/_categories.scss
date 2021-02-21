@@ -27,7 +27,7 @@
         padding: 13px 30px;
       }
 
-      @media (max-width: 550px) {
+      @media (max-width: 650px) {
         padding: 10px 20px;
         max-width: 100%;
       }
@@ -36,6 +36,10 @@
         padding: 10px 5px;
         max-width: 100%;
         background-color: transparent;
+      }
+
+      @media (max-width: 360px) {
+        padding: 10px 0;
       }
 
       &:last-child {
